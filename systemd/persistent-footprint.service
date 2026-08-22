@@ -1,0 +1,43 @@
+[Unit]
+Description=Persistent Footprint Recovery Telemetry
+Documentation=file:/opt/persistent-footprint/README.md
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+StateDirectory=persistent-footprint
+LogsDirectory=persistent-footprint
+ConfigurationDirectory=persistent-footprint
+Environment=PYTHONPATH=/opt/persistent-footprint/src
+EnvironmentFile=-/etc/persistent-footprint/agent.env
+ExecStart=/usr/bin/python3 -m persistent_footprint --config /etc/persistent-footprint/config.json
+Restart=on-failure
+RestartSec=15s
+TimeoutStopSec=20s
+UMask=0027
+NoNewPrivileges=yes
+PrivateDevices=yes
+PrivateTmp=yes
+ProtectClock=yes
+ProtectControlGroups=yes
+ProtectHome=yes
+ProtectHostname=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectSystem=strict
+ProtectProc=invisible
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+CapabilityBoundingSet=
+AmbientCapabilities=
+SystemCallArchitectures=native
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+
+[Install]
+WantedBy=multi-user.target

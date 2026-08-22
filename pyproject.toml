@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "persistent-footprint"
+version = "1.0.0"
+description = "Transparent Linux host telemetry for recovery validation"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{name = "Recovery Engineering"}]
+dependencies = []
+
+[project.scripts]
+persistent-footprint = "persistent_footprint.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,22 @@
+{
+  "interval_seconds": 60,
+  "disk_paths": [
+    "/"
+  ],
+  "audit": {
+    "path": "/var/log/persistent-footprint/audit.jsonl",
+    "max_bytes": 10485760,
+    "backups": 5
+  },
+  "delivery": {
+    "endpoint": null,
+    "timeout_seconds": 10,
+    "token_env": "PERSISTENT_FOOTPRINT_TOKEN",
+    "ca_file": null,
+    "max_payload_bytes": 262144
+  },
+  "spool": {
+    "directory": "/var/lib/persistent-footprint/spool",
+    "max_files": 1000
+  }
+}
